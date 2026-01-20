@@ -2,13 +2,13 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Indie Flower', cursive; /* Fuente estilo carta */
-    overflow: hidden; /* Evita scroll en el body, solo scrollea la carta */
+    font-family: 'Indie Flower', cursive;
+    overflow: hidden; 
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff9c4; /* Amarillo patito de fondo por si la imagen tarda */
+    background-color: #fff9c4;
 }
 
 /* --- 1. FONDO INFINITO POMPOMPURIN --- */
@@ -20,22 +20,21 @@ body {
     /* Asegurate que tu imagen sea un patrón seamless (sin bordes) */
     background-image: url('img/bg-pattern.png'); 
     background-repeat: repeat;
-    background-size: 300px; /* Ajustá según el tamaño de tu png */
+    background-size: 300px;
     animation: moveBackground 60s linear infinite;
-    opacity: 0.6; /* Un poco transparente para no marear */
+    opacity: 0.6; 
 }
 
 @keyframes moveBackground {
     from { background-position: 0 0; }
-    to { background-position: 1000px 1000px; } /* Mueve diagonalmente */
+    to { background-position: 1000px 1000px; }
 }
 
-/* --- 2. CARTA CENTRAL --- */
 .card-container {
     background: white;
     width: 90%;
     max-width: 600px;
-    height: 80vh; /* Ocupa el 80% del alto de pantalla */
+    height: 80vh;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     padding: 2rem;
@@ -47,14 +46,14 @@ body {
 }
 
 .card-container h1 {
-    color: #5c4033; /* Marrón tipo Pompompurin */
+    color: #5c4033;
     margin-bottom: 20px;
     font-size: 2rem;
 }
 
 .lista-content {
     flex: 1;
-    overflow-y: auto; /* ESTO permite el scroll solo aquí dentro */
+    overflow-y: auto;
     text-align: left;
     padding-right: 10px;
 }
@@ -71,14 +70,13 @@ li {
     padding-bottom: 5px;
 }
 
-/* --- 3. POLAROIDS FLOTANTES --- */
 .polaroid {
     position: absolute;
     background: white;
-    padding: 10px 10px 30px 10px; /* Más padding abajo para efecto polaroid */
+    padding: 10px 10px 30px 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    width: 180px; /* Tamaño fijo */
-    transform: rotate(-5deg); /* Rotación inicial */
+    width: 180px;
+    transform: rotate(-5deg);
     z-index: 5;
     animation: floating 4s ease-in-out infinite;
 }
@@ -87,27 +85,25 @@ li {
     width: 100%;
     height: auto;
     display: block;
-    filter: sepia(20%); /* Filtro vintage opcional */
+    filter: sepia(20%);
 }
 
-/* Animación de flotar (sube y baja) */
 @keyframes floating {
     0% { transform: translateY(0px) rotate(var(--rot)); }
     50% { transform: translateY(-15px) rotate(var(--rot)); }
     100% { transform: translateY(0px) rotate(var(--rot)); }
 }
 
-/* Posiciones específicas para cada foto (Ajustalas a gusto) */
 .p1 { 
     top: 10%; left: 5%; 
-    --rot: -5deg; /* Variable para mantener la rotación en la animación */
+    --rot: -5deg; 
     animation-delay: 0s;
 }
 
 .p2 { 
     bottom: 15%; left: 10%; 
     --rot: 3deg;
-    animation-delay: 1.5s; /* Delay para que no se muevan igual */
+    animation-delay: 1.5s;
 }
 
 .p3 { 
@@ -117,13 +113,19 @@ li {
 }
 
 .p4 { 
-    top: 10%; right: 10%; 
-    --rot: 4deg;
-    animation-delay: 2s;
+    bottom: 15%; right: 5%;
+    --rot: -4deg; 
+    animation-delay: 2.2s;
 }
 
-/* Ocultar fotos en celulares muy chicos si molestan */
 @media (max-width: 768px) {
-    .polaroid { display: none; } 
-    /* O podés hacerlas más chicas: width: 100px; */
+    .polaroid { 
+        width: 80px;
+        padding: 5px 5px 15px 5px; 
+    }
+
+    .p1 { top: 2%; left: 2%; }
+    .p2 { bottom: 2%; left: 2%; }
+    .p3 { top: 2%; right: 2%; }
+    .p4 { bottom: 2%; right: 2%; }
 }
