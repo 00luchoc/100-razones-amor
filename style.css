@@ -116,6 +116,12 @@ li {
     animation-delay: 0.5s;
 }
 
+.p4 { 
+    top: 10%; right: 10%; 
+    --rot: 4deg;
+    animation-delay: 2s;
+}
+
 /* Ocultar fotos en celulares muy chicos si molestan */
 @media (max-width: 768px) {
     .polaroid { display: none; } 
