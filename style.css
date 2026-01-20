@@ -1,0 +1,123 @@
+/* Reseteo básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Indie Flower', cursive; /* Fuente estilo carta */
+    overflow: hidden; /* Evita scroll en el body, solo scrollea la carta */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff9c4; /* Amarillo patito de fondo por si la imagen tarda */
+}
+
+/* --- 1. FONDO INFINITO POMPOMPURIN --- */
+.background-loop {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    /* Asegurate que tu imagen sea un patrón seamless (sin bordes) */
+    background-image: url('img/bg-pattern.png'); 
+    background-repeat: repeat;
+    background-size: 300px; /* Ajustá según el tamaño de tu png */
+    animation: moveBackground 60s linear infinite;
+    opacity: 0.6; /* Un poco transparente para no marear */
+}
+
+@keyframes moveBackground {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; } /* Mueve diagonalmente */
+}
+
+/* --- 2. CARTA CENTRAL --- */
+.card-container {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    height: 80vh; /* Ocupa el 80% del alto de pantalla */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-container h1 {
+    color: #5c4033; /* Marrón tipo Pompompurin */
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.lista-content {
+    flex: 1;
+    overflow-y: auto; /* ESTO permite el scroll solo aquí dentro */
+    text-align: left;
+    padding-right: 10px;
+}
+
+/* Scrollbar personalizada bonita */
+.lista-content::-webkit-scrollbar { width: 8px; }
+.lista-content::-webkit-scrollbar-thumb { background: #ffd54f; border-radius: 4px; }
+
+li {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #444;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 5px;
+}
+
+/* --- 3. POLAROIDS FLOTANTES --- */
+.polaroid {
+    position: absolute;
+    background: white;
+    padding: 10px 10px 30px 10px; /* Más padding abajo para efecto polaroid */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 180px; /* Tamaño fijo */
+    transform: rotate(-5deg); /* Rotación inicial */
+    z-index: 5;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: sepia(20%); /* Filtro vintage opcional */
+}
+
+/* Animación de flotar (sube y baja) */
+@keyframes floating {
+    0% { transform: translateY(0px) rotate(var(--rot)); }
+    50% { transform: translateY(-15px) rotate(var(--rot)); }
+    100% { transform: translateY(0px) rotate(var(--rot)); }
+}
+
+/* Posiciones específicas para cada foto (Ajustalas a gusto) */
+.p1 { 
+    top: 10%; left: 5%; 
+    --rot: -5deg; /* Variable para mantener la rotación en la animación */
+    animation-delay: 0s;
+}
+
+.p2 { 
+    bottom: 15%; left: 10%; 
+    --rot: 3deg;
+    animation-delay: 1.5s; /* Delay para que no se muevan igual */
+}
+
+.p3 { 
+    top: 15%; right: 5%; 
+    --rot: 6deg;
+    animation-delay: 0.5s;
+}
+
+/* Ocultar fotos en celulares muy chicos si molestan */
+@media (max-width: 768px) {
+    .polaroid { display: none; } 
+    /* O podés hacerlas más chicas: width: 100px; */
+}
