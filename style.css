@@ -1,12 +1,19 @@
+/* RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Indie Flower', cursive;
     background-color: #fff9c4;
-    overflow-y: auto; /* Permitimos scroll vertical */
-    overflow-x: hidden;
-    display: block; /* Quitamos el flex centrado del body */
+    color: #5c4033;
+    overflow-x: hidden; /* Evita que la página se mueva hacia los costados */
+    line-height: 1.6;
 }
 
-/* El fondo se queda quieto mientras el contenido sube */
+/* FONDO POMPOMPURIN */
 .background-loop {
     position: fixed;
     top: 0; left: 0;
@@ -14,64 +21,81 @@ body {
     z-index: -1;
     background-image: url('img/bg-pattern.png'); 
     background-repeat: repeat;
-    background-size: 200px;
-    animation: moveBackground 60s linear infinite;
-    opacity: 0.4;
+    background-size: 150px;
+    animation: moveBackground 40s linear infinite;
+    opacity: 0.3;
 }
 
+@keyframes moveBackground {
+    from { background-position: 0 0; }
+    to { background-position: 500px 500px; }
+}
+
+/* TITULO */
 .main-title {
+    padding: 60px 20px;
     text-align: center;
-    padding: 50px 20px;
-    color: #5c4033;
 }
 
-.recorrido {
-    max-width: 500px; /* Ancho ideal para celulares */
+.main-title h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px white;
+}
+
+/* CONTENEDOR DE LA HISTORIA */
+.story-container {
+    max-width: 450px; /* Ancho perfecto para celular */
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
 }
 
-/* Estilo de las razones tipo notas */
-.grupo-razones {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
+/* BLOQUES DE TEXTO */
+.reasons-block {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 25px;
     border-radius: 20px;
+    margin-bottom: 30px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
+}
+
+ol {
+    padding-left: 20px;
 }
 
 li {
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-    color: #5c4033;
-    border-bottom: 1px dashed #ffe082;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed #ffd54f;
+    padding-bottom: 5px;
 }
 
-/* FOTOS: Ahora son parte del scroll, no flotan encima */
+/* FOTOS POLAROID (Ajustadas para Celular) */
 .polaroid-inline {
     background: white;
-    padding: 15px 15px 40px 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transform: rotate(2deg); /* Efecto inclinada */
-    margin: 40px auto;
-    max-width: 85%;
-    text-align: center;
+    padding: 12px 12px 35px 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    margin: 50px auto;
+    width: 90%;
+    max-width: 300px;
+    transform: rotate(-2deg); /* Inclinación natural */
+    transition: transform 0.3s ease;
+}
+
+/* Inclinamos las fotos pares al otro lado para que se vea dinámico */
+.polaroid-inline:nth-of-type(even) {
+    transform: rotate(3deg);
 }
 
 .polaroid-inline img {
     width: 100%;
     height: auto;
     display: block;
+    border: 1px solid #eee;
 }
 
-.polaroid-inline span {
-    display: block;
+.polaroid-inline p {
+    text-align: center;
     margin-top: 15px;
     font-size: 1rem;
     color: #888;
-}
-
-/* Inclinamos fotos alternas para que se vea más creativo */
-.polaroid-inline:nth-of-type(even) {
-    transform: rotate(-3deg);
 }
