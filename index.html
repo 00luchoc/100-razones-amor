@@ -3,67 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi chica ❤️</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Para vos ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET Y BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Indie Flower', cursive;
+            background-color: #fff9c4;
+            color: #5c4033;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- FONDO ANIMADO --- */
+        .background-loop {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image: url('img/bg-pattern.png'); 
+            background-repeat: repeat;
+            background-size: 150px;
+            animation: moveBackground 40s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes moveBackground {
+            from { background-position: 0 0; }
+            to { background-position: 500px 500px; }
+        }
+
+        /* --- CABECERA --- */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #fff;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .story-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+        }
+
+        /* --- LISTAS --- */
+        .reasons-block {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px 25px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        ol { padding-left: 25px; }
+        
+        li {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            border-bottom: 1px dashed #ffd54f;
+            padding-bottom: 8px;
+        }
+
+        /* --- ANIMACIONES DE FLOTAR (Explicitamente separadas) --- */
+        
+        /* Animación para fotos normales (rotadas a la izquierda) */
+        @keyframes floatLeft {
+            0% { transform: translateY(0px) rotate(-3deg); }
+            50% { transform: translateY(-15px) rotate(-3deg); } /* Sube 15px */
+            100% { transform: translateY(0px) rotate(-3deg); }
+        }
+
+        /* Animación para fotos 'even' (rotadas a la derecha) */
+        @keyframes floatRight {
+            0% { transform: translateY(0px) rotate(3deg); }
+            50% { transform: translateY(-15px) rotate(3deg); } /* Sube 15px */
+            100% { transform: translateY(0px) rotate(3deg); }
+        }
+
+        /* --- FOTOS POLAROID --- */
+        .polaroid {
+            background: white;
+            padding: 12px 12px 45px 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            margin: 60px auto;
+            width: 100%;
+            display: block;
+            
+            /* APLICAMOS LA ANIMACIÓN IZQUIERDA POR DEFECTO */
+            animation: floatLeft 3s ease-in-out infinite;
+        }
+
+        /* APLICAMOS LA ANIMACIÓN DERECHA A LAS PARES */
+        .polaroid.even { 
+            animation: floatRight 3.5s ease-in-out infinite; /* Tiempo diferente para variar */
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+            border: 1px solid #eee;
+        }
+
+        .polaroid p {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
     <div class="background-loop"></div>
 
-    <header class="main-title">
+    <header>
         <h1>100 Razones por las que te amo</h1>
-        <p>Deslizá hacia abajo... ✨</p>
+        <p>Deslizá hacia abajo... 👇</p>
     </header>
 
-    <main class="story-container">
+    <div class="story-container">
         
-        <section class="reasons-block">
+        <div class="reasons-block">
             <ol>
-                <li>Porque me apoyás en mis proyectos.</li>
-                <li>Por tu sonrisa cuando me ves.</li>
-                <li>Por cómo me escuchás.</li>
-                </ol>
-        </section>
-
-        <div class="polaroid-inline">
-            <img src="img/foto1.jpeg" alt="Nuestra foto 1">
-            <p>Nuestro primer momento...</p>
+                <li>Razón 1: Escribí aquí tu texto...</li>
+                <li>Razón 2: Escribí aquí tu texto...</li>
+                <li>Razón 3...</li>
+                <li>Razón 4...</li>
+                <li>Razón 5...</li>
+                <li>Razón 25...</li>
+            </ol>
         </div>
 
-        <section class="reasons-block">
+        <div class="polaroid">
+            <img src="img/foto1.jpeg" alt="Foto 1">
+            <p>Nuestro comienzo ❤️</p>
+        </div>
+
+        <div class="reasons-block">
             <ol start="26">
                 <li>Razón 26...</li>
                 </ol>
-        </section>
-
-        <div class="polaroid-inline">
-            <img src="img/foto2.jpeg" alt="Nuestra foto 2">
-            <p>Amo cada segundo con vos</p>
         </div>
 
-        <section class="reasons-block">
+        <div class="polaroid even">
+            <img src="img/foto2.jpeg" alt="Foto 2">
+            <p>Momentos únicos</p>
+        </div>
+
+        <div class="reasons-block">
             <ol start="51">
                 <li>Razón 51...</li>
                 </ol>
-        </section>
-
-        <div class="polaroid-inline">
-            <img src="img/foto3.jpeg" alt="Nuestra foto 3">
         </div>
 
-        <section class="reasons-block">
+        <div class="polaroid">
+            <img src="img/foto3.jpeg" alt="Foto 3">
+            <p>Aventuras juntos</p>
+        </div>
+
+        <div class="reasons-block">
             <ol start="76">
-                <li>Razón 76...</li>
-                </ol>
-        </section>
-
-        <div class="polaroid-inline">
-            <img src="img/foto4.jpeg" alt="Nuestra foto 4">
-            <p>Por muchísimos años más ❤️</p>
+               <li>Razón 76...</li>
+               <li>Razón 100: ¡Porque sos mi todo!</li>
+            </ol>
         </div>
 
-    </main>
+        <div class="polaroid even">
+            <img src="img/foto4.jpeg" alt="Foto 4">
+            <p>Por siempre juntos ✨</p>
+        </div>
+
+    </div>
 
 </body>
 </html>
