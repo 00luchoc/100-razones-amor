@@ -1,131 +1,77 @@
-/* Reseteo básico */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
     font-family: 'Indie Flower', cursive;
-    overflow: hidden; 
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #fff9c4;
+    overflow-y: auto; /* Permitimos scroll vertical */
+    overflow-x: hidden;
+    display: block; /* Quitamos el flex centrado del body */
 }
 
-/* --- 1. FONDO INFINITO POMPOMPURIN --- */
+/* El fondo se queda quieto mientras el contenido sube */
 .background-loop {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     z-index: -1;
-    /* Asegurate que tu imagen sea un patrón seamless (sin bordes) */
     background-image: url('img/bg-pattern.png'); 
     background-repeat: repeat;
-    background-size: 300px;
+    background-size: 200px;
     animation: moveBackground 60s linear infinite;
-    opacity: 0.6; 
+    opacity: 0.4;
 }
 
-@keyframes moveBackground {
-    from { background-position: 0 0; }
-    to { background-position: 1000px 1000px; }
-}
-
-.card-container {
-    background: white;
-    width: 90%;
-    max-width: 600px;
-    height: 80vh;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    padding: 2rem;
+.main-title {
     text-align: center;
-    position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-container h1 {
+    padding: 50px 20px;
     color: #5c4033;
-    margin-bottom: 20px;
-    font-size: 2rem;
 }
 
-.lista-content {
-    flex: 1;
-    overflow-y: auto;
-    text-align: left;
-    padding-right: 10px;
+.recorrido {
+    max-width: 500px; /* Ancho ideal para celulares */
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Scrollbar personalizada bonita */
-.lista-content::-webkit-scrollbar { width: 8px; }
-.lista-content::-webkit-scrollbar-thumb { background: #ffd54f; border-radius: 4px; }
+/* Estilo de las razones tipo notas */
+.grupo-razones {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
 
 li {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: #444;
-    border-bottom: 1px dashed #eee;
-    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: #5c4033;
+    border-bottom: 1px dashed #ffe082;
 }
 
-.polaroid {
-    position: absolute;
+/* FOTOS: Ahora son parte del scroll, no flotan encima */
+.polaroid-inline {
     background: white;
-    padding: 10px 10px 30px 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    width: 180px;
-    transform: rotate(-5deg);
-    z-index: 5;
-    animation: floating 4s ease-in-out infinite;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: rotate(2deg); /* Efecto inclinada */
+    margin: 40px auto;
+    max-width: 85%;
+    text-align: center;
 }
 
-.polaroid img {
+.polaroid-inline img {
     width: 100%;
     height: auto;
     display: block;
-    filter: sepia(20%);
 }
 
-@keyframes floating {
-    0% { transform: translateY(0px) rotate(var(--rot)); }
-    50% { transform: translateY(-15px) rotate(var(--rot)); }
-    100% { transform: translateY(0px) rotate(var(--rot)); }
+.polaroid-inline span {
+    display: block;
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #888;
 }
 
-.p1 { 
-    top: 10%; left: 5%; 
-    --rot: -5deg; 
-    animation-delay: 0s;
-}
-
-.p2 { 
-    bottom: 15%; left: 10%; 
-    --rot: 3deg;
-    animation-delay: 1.5s;
-}
-
-.p3 { 
-    top: 15%; right: 5%; 
-    --rot: 6deg;
-    animation-delay: 0.5s;
-}
-
-.p4 { 
-    bottom: 15%; right: 5%;
-    --rot: -4deg; 
-    animation-delay: 2.2s;
-}
-
-@media (max-width: 768px) {
-    .polaroid { 
-        width: 80px;
-        padding: 5px 5px 15px 5px; 
-    }
-
-    .p1 { top: 2%; left: 2%; }
-    .p2 { bottom: 2%; left: 2%; }
-    .p3 { top: 2%; right: 2%; }
-    .p4 { bottom: 2%; right: 2%; }
+/* Inclinamos fotos alternas para que se vea más creativo */
+.polaroid-inline:nth-of-type(even) {
+    transform: rotate(-3deg);
 }
